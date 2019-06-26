@@ -136,6 +136,10 @@ options:
                     - '>='
                     - '<='
                     - 'not in'
+                    - 'matches'
+                    - 'does not match'
+                    - 'Yes'
+                    - 'No'
             formulaid:
                 description:
                     - Arbitrary unique ID that is used to reference the condition from a custom expression.
@@ -1396,7 +1400,11 @@ class Filter(object):
                 "in",
                 ">=",
                 "<=",
-                "not in"], _condition['operator']
+                "not in",
+                "matches",
+                "does not match",
+                "Yes",
+                "No"], _condition['operator']
             )
         except Exception as e:
             self._module.fail_json(msg="Unsupported value '%s' for operator." % _condition['operator'])

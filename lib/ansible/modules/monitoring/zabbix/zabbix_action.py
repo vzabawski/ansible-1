@@ -127,6 +127,7 @@ options:
                 description:
                     - Condition operator.
                     - When I(type) is set to C(time_period), the choices are C(in), C(not in).
+                    - 'matches', 'does not match', 'Yes' and 'No' condition operators work only with >= Zabbix 4.0
                 choices:
                     - '='
                     - '<>'

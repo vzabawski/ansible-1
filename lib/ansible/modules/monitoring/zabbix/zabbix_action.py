@@ -799,15 +799,15 @@ class Action(object):
                 'discovery',
                 'auto_registration',
                 'internal'], kwargs['event_source']),
-            'esc_period': kwargs.get('esc_period'),
-            'filter': kwargs['conditions'],
-            'def_longdata': kwargs['default_message'],
-            'def_shortdata': kwargs['default_subject'],
-            'r_longdata': kwargs['recovery_default_message'],
-            'r_shortdata': kwargs['recovery_default_subject'],
-            'ack_longdata': kwargs['acknowledge_default_message'],
-            'ack_shortdata': kwargs['acknowledge_default_subject'],
-            'operations': kwargs['operations'],
+            'esc_period': kwargs['esc_period'],
+            'filter': kwargs.get('conditions'),
+            'def_longdata': kwargs.get('default_message'),
+            'def_shortdata': kwargs.get('default_subject'),
+            'r_longdata': kwargs.get('recovery_default_message'),
+            'r_shortdata': kwargs.get('recovery_default_subject'),
+            'ack_longdata': kwargs.get('acknowledge_default_message'),
+            'ack_shortdata': kwargs.get('acknowledge_default_subject'),
+            'operations': kwargs.get('operations'),
             'recovery_operations': kwargs.get('recovery_operations'),
             'acknowledge_operations': kwargs.get('acknowledge_operations'),
             'status': to_numeric_value([
@@ -1112,6 +1112,8 @@ class Operations(object):
             list: constructed operation data
         """
         constructed_data = []
+        if operations is None:
+            return None
         for op in operations:
             operation_type = self._construct_operationtype(op)
             constructed_operation = {
